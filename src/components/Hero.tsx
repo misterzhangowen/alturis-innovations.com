@@ -1,57 +1,51 @@
 import { Button } from "./ui/button";
-import { buttonVariants } from "./ui/button";
-import { HeroCards } from "./HeroCards";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import heroImage from "../assets/hero_laser_scan.png";
 
 export const Hero = () => {
   return (
-    <section className="container grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
+    <section className="container min-h-[90vh] grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
       <div className="text-center lg:text-start space-y-6">
-        <main className="text-5xl md:text-6xl font-bold">
-          <h1 className="inline">
-            <span className="inline bg-gradient-to-r from-[#F596D3]  to-[#D247BF] text-transparent bg-clip-text">
-              Shadcn
-            </span>{" "}
-            landing page
-          </h1>{" "}
-          for{" "}
-          <h2 className="inline">
-            <span className="inline bg-gradient-to-r from-[#61DAFB] via-[#1fc0f1] to-[#03a3d7] text-transparent bg-clip-text">
-              React
-            </span>{" "}
-            developers
-          </h2>
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-blue/10 border border-brand-blue/20 text-brand-blue text-xs font-bold uppercase tracking-widest animate-pulse">
+           Deep-Tech Studio
+        </div>
+        <main className="text-5xl md:text-7xl font-extrabold tracking-tighter leading-none">
+          <h1>
+            Physicalizing <br />
+            <span className="text-brand-blue">Artificial Intelligence.</span>
+          </h1>
         </main>
 
-        <p className="text-xl text-muted-foreground md:w-10/12 mx-auto lg:mx-0">
-          Build your React landing page effortlessly with the required sections
-          to your project.
+        <p className="text-xl text-brand-silver md:w-10/12 mx-auto lg:mx-0 leading-relaxed">
+          Alturis Innovations is a deep-tech commercialization studio. We seamlessly integrate cutting-edge AI algorithms with high-precision automation and kinetic hardware.
         </p>
 
-        <div className="space-y-4 md:space-y-0 md:space-x-4">
-          <Button className="w-full md:w-1/3">Get Started</Button>
-
-          <a
-            rel="noreferrer noopener"
-            href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-            target="_blank"
-            className={`w-full md:w-1/3 ${buttonVariants({
-              variant: "outline",
-            })}`}
+        <div className="pt-4">
+          <Button 
+            size="lg" 
+            className="bg-brand-blue text-brand-dark hover:bg-brand-blue/90 font-bold px-8 rounded-full transition-all hover:scale-105"
+            onClick={() => window.location.href = 'mailto:inquiries@alturis-innovations.com'}
           >
-            Github Repository
-            <GitHubLogoIcon className="ml-2 w-5 h-5" />
-          </a>
+            Partner With Us
+          </Button>
         </div>
       </div>
 
-      {/* Hero cards sections */}
-      <div className="z-10">
-        <HeroCards />
+      <div className="relative group">
+        <div className="absolute -inset-4 bg-brand-blue/20 rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+        <div className="relative aspect-square md:aspect-video w-full max-w-[600px] bg-brand-dark border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+           <img 
+            src={heroImage} 
+            alt="Physical AI Scanning" 
+            className="w-full h-full object-cover grayscale-[0.2] hover:grayscale-0 transition-all duration-700"
+           />
+           <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent opacity-60"></div>
+           <div className="absolute bottom-4 left-4 font-mono text-[10px] text-brand-blue/40">
+              SYSTEM_SCAN::ACTIVE <br />
+              COORD_X: 42.001 <br />
+              COORD_Y: 88.012
+           </div>
+        </div>
       </div>
-
-      {/* Shadow effect */}
-      <div className="shadow"></div>
     </section>
   );
 };

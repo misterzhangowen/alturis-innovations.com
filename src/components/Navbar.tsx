@@ -12,11 +12,8 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
-import { Menu } from "lucide-react";
-import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
+import { Menu, Zap } from "lucide-react";
 
 interface RouteProps {
   href: string;
@@ -25,85 +22,74 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "#features",
-    label: "Features",
+    href: "#philosophy",
+    label: "Philosophy",
   },
   {
-    href: "#testimonials",
-    label: "Testimonials",
+    href: "#verticals",
+    label: "Verticals",
   },
   {
-    href: "#pricing",
-    label: "Pricing",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
+    href: "#advantage",
+    label: "Advantage",
   },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
+    <header className="sticky top-0 z-40 w-full bg-brand-dark/80 backdrop-blur-md border-b border-white/5">
       <NavigationMenu className="mx-auto">
-        <NavigationMenuList className="container h-14 px-4 w-screen flex justify-between ">
+        <NavigationMenuList className="container h-16 px-4 w-screen flex justify-between">
           <NavigationMenuItem className="font-bold flex">
             <a
-              rel="noreferrer noopener"
               href="/"
-              className="ml-2 font-bold text-xl flex"
+              className="font-bold text-xl flex items-center gap-2 tracking-tighter"
             >
-              <LogoIcon />
-              ShadcnUI/React
+              <div className="w-8 h-8 bg-brand-blue rounded-sm flex items-center justify-center">
+                 <Zap size={20} className="text-brand-dark fill-brand-dark" />
+              </div>
+              <span className="hidden sm:inline">Alturis <span className="text-brand-blue">Innovations</span></span>
             </a>
           </NavigationMenuItem>
 
           {/* mobile */}
           <span className="flex md:hidden">
-            <ModeToggle />
-
             <Sheet
               open={isOpen}
               onOpenChange={setIsOpen}
             >
               <SheetTrigger className="px-2">
                 <Menu
-                  className="flex md:hidden h-5 w-5"
+                  className="h-6 w-6 text-brand-silver"
                   onClick={() => setIsOpen(true)}
-                >
-                  <span className="sr-only">Menu Icon</span>
-                </Menu>
+                />
               </SheetTrigger>
 
-              <SheetContent side={"left"}>
+              <SheetContent side={"left"} className="bg-brand-dark border-r border-white/5 text-white">
                 <SheetHeader>
-                  <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                  <SheetTitle className="font-extrabold text-xl text-white tracking-tighter">
+                    Alturis <span className="text-brand-blue">Innovations</span>
                   </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col justify-center items-center gap-2 mt-4">
+                <nav className="flex flex-col justify-center items-center gap-4 mt-8">
                   {routeList.map(({ href, label }: RouteProps) => (
                     <a
-                      rel="noreferrer noopener"
                       key={label}
                       href={href}
                       onClick={() => setIsOpen(false)}
-                      className={buttonVariants({ variant: "ghost" })}
+                      className="text-lg font-medium text-brand-silver hover:text-brand-blue transition-colors"
                     >
                       {label}
                     </a>
                   ))}
                   <a
-                    rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-                    target="_blank"
-                    className={`w-[110px] border ${buttonVariants({
-                      variant: "secondary",
-                    })}`}
+                    href="mailto:inquiries@alturis-innovations.com"
+                    className={`mt-4 w-full ${buttonVariants({
+                      variant: "default",
+                    })} bg-brand-blue text-brand-dark font-bold rounded-full`}
                   >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
+                    Contact Us
                   </a>
                 </nav>
               </SheetContent>
@@ -111,33 +97,25 @@ export const Navbar = () => {
           </span>
 
           {/* desktop */}
-          <nav className="hidden md:flex gap-2">
+          <nav className="hidden md:flex gap-8 items-center">
             {routeList.map((route: RouteProps, i) => (
               <a
-                rel="noreferrer noopener"
                 href={route.href}
                 key={i}
-                className={`text-[17px] ${buttonVariants({
-                  variant: "ghost",
-                })}`}
+                className="text-sm font-bold text-brand-silver hover:text-brand-blue transition-colors uppercase tracking-widest"
               >
                 {route.label}
               </a>
             ))}
           </nav>
 
-          <div className="hidden md:flex gap-2">
+          <div className="hidden md:flex gap-4 items-center">
             <a
-              rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-              target="_blank"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
+              href="mailto:inquiries@alturis-innovations.com"
+              className={`${buttonVariants({ variant: "outline" })} border-brand-blue/30 text-brand-blue hover:bg-brand-blue/10 rounded-full font-bold px-6`}
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
+              Partner With Us
             </a>
-
-            <ModeToggle />
           </div>
         </NavigationMenuList>
       </NavigationMenu>

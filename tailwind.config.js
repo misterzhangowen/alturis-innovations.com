@@ -22,6 +22,12 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        brand: {
+          dark: "#0F172A",
+          silver: "#94A3B8",
+          blue: "#38BDF8",
+          orange: "#F97316",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -50,6 +56,9 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      fontFamily: {
+        sans: ["Inter", "Roboto", "sans-serif"],
       },
       borderRadius: {
         lg: "var(--radius)",
