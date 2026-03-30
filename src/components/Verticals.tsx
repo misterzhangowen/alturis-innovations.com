@@ -1,4 +1,4 @@
-import { Cpu, Eye, Activity, Box } from "lucide-react";
+import { Eye, Activity } from "lucide-react";
 import industrialImage from "../assets/industrial_vision_probe.png";
 
 const verticalDetails = [
